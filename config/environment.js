@@ -20,6 +20,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+     ENV.API_NAMESPACE = 'v1';
+
      ENV.contentSecurityPolicy = {
        'connect-src': "'self' *",
        'script-src': "'self' *",
@@ -43,7 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.API_NAMESPACE = 'api/v1';
   }
 
   return ENV;
