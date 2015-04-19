@@ -21,7 +21,6 @@ export default Ember.Component.extend({
     let points = function () {
       let output = [];
       trails.forEach(function(trail) {
-        console.log(trail);
         let point = { "type": "Feature",
           "geometry": {"type": "Point", "coordinates": [trail.lng, trail.lat]},
           "properties": {"marker-symbol": "park", "marker-color": "#0C5CFE", "marker-size": "large"}
