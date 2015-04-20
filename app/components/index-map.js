@@ -14,28 +14,27 @@ export default Ember.Component.extend({
     let map = L.mapbox.map(this.elementId, 'lydias303.4be232dc');
     this.set('map', map);
 
-    // let lat = this.get('trail.lat');
-    //
-    // let lng = this.get('trail.lng');
-
     let points = function () {
       let output = [];
       trails.forEach(function(trail) {
+
+        let lat = trail.get('lat');
+        let lng = trail.get('lng');
+
         let point = { "type": "Feature",
-          "geometry": {"type": "Point", "coordinates": [trail.lng, trail.lat]},
+          "geometry": {"type": "Point", "coordinates": [lng, lat]},
           "properties": {"marker-symbol": "park", "marker-color": "#0C5CFE", "marker-size": "large"}
         };
         output.push(point);
       });
-      return output
+      return output;
     };
-
-    map.setView([trails[0].lat, trails[0].lng], 6);
+    map.setView([trails.get('firstObject.lat'), trails.get('firstObject.lng')], 6);
 
     var pointSet = { "type": "FeatureCollection",
       "features": points()
     };
 
-var myLayer = L.mapbox.featureLayer(pointSet).addTo(map);
-}
+    var myLayer = L.mapbox.featureLayer(pointSet).addTo(map);
+  }
 });

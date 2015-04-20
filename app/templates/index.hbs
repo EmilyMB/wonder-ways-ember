@@ -55,17 +55,9 @@
   <div class="col-md-8">
   <div id="us-map" class="map">
     <h3>Checkout the trails in <span>{{#link-to 'trails' selectedState}}{{selectedState}}{{/link-to}}</span></h3>
-    {{us-map trails=model selectedState=selectedState}}
+    {{us-map}}
   </div>
   </div>
-  <div class="col-md-4 well">
-  <h1 class="state">See Trails in Your State</h1>
-  <div class="state-links">
-    {{#each allStates as |state| }}
-    {{#link-to 'trails' state}}{{state}}{{/link-to}}
-    {{/each}}
-  </div>
-</div>
 </div>
 <script>
   $(document).ready(function(){
@@ -73,3 +65,5 @@
     $(".mission").hide();
   });
 </script>
+
+{{outlet}}

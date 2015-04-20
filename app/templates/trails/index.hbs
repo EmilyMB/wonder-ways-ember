@@ -1,3 +1,4 @@
+I'm in INDEX
 <div class="row">
   <div class="col-md-1">
     <a href="/"><img src="assets/images/back-button.png" class="back-button"></a>
@@ -17,48 +18,40 @@
       {{input type="search" value=searchTerm placeholder="Search Trails" autocomplete="off"}}
     </form>
 </div>
-<div class="row well">
-  <h1>See Trails in Your State</h1>
-  <div class="state-links">
-    {{#each allStates as |state| }}
-    {{#link-to 'trails' state}}{{state}}{{/link-to}}
-    {{/each}}
-  </div>
-</div>
 
 <div class="row well">
   <h2>Trails</h2>
   <div class="col-md-6">
 <ul>
-  {{#each filteredTrails as |trail|}}
-    <li>{{#link-to 'trail' trail}}{{trail.name}}{{/link-to}}</li>
+  {{#each trail in model}}
+    <li>{{#link-to 'trails.trail' trail}}{{trail.name}}{{/link-to}}</li>
     <li>{{trail.city}}, {{trail.state}}</li>
   {{/each}}
 </ul>
 </div>
 <div class="col-md-6">
     <div id="index-map" class="map">
-        {{index-map trails=model}}
+      {{index-map trails=model}}
     </div>
 </div>
 </div>
 
-<script>
-
-$(function () {
-  $(document).ready(function () {
-
-    $('a[href="#lookUp"]').on('click', function(event) {
-        event.preventDefault();
-        $('#search').addClass('open');
-        $('#search > form > input[type="search"]').focus();
-    });
-
-    $('#search, #search button.close').on('click keyup', function(event) {
-        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-            $(this).removeClass('open');
-        }
-    });
-  });
-});
-</script>
+// <script>
+//
+// $(function () {
+//   $(document).ready(function () {
+//
+//     $('a[href="#lookUp"]').on('click', function(event) {
+//         event.preventDefault();
+//         $('#search').addClass('open');
+//         $('#search > form > input[type="search"]').focus();
+//     });
+//
+//     $('#search, #search button.close').on('click keyup', function(event) {
+//         if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+//             $(this).removeClass('open');
+//         }
+//     });
+//   });
+// });
+// </script>

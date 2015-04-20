@@ -3,9 +3,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   map: null,
   classNames: ['us-map'],
+  stateClickedAction: 'stateSelected',
 
   didInsertElement: function () {
 
@@ -123,7 +123,7 @@ export default Ember.Component.extend({
         mouseout: resetHighlight,
         click: function (e) {
           zoomToFeature(e);
-          this.set('selectedState', feature.properties.name)
+          this.sendAction('stateClickedAction', feature.properties.name)
         }.bind(this)
       });
     }

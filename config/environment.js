@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    API_NAMESPACE: 'api/v1',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -20,7 +21,6 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-     ENV.API_NAMESPACE = 'v1';
 
      ENV.contentSecurityPolicy = {
        'connect-src': "'self' *",
@@ -45,7 +45,6 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.API_NAMESPACE = 'api/v1';
   }
 
   return ENV;

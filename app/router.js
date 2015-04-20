@@ -6,8 +6,8 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.resource('trails', { path: ':state' }, function () {
-    this.resource('trail', { path: ':trail_id' }, function() {
+  this.route('trails', {path: ':state'}, function() {
+    this.route('trail', {path: ':trail_id'}, function() {
       this.route('activities');
       this.route('animals');
       this.route('plants');
